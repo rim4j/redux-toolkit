@@ -1,0 +1,47 @@
+import { useSelector } from "react-redux";
+import { FaArrowUp } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
+
+const CartContainer = () => {
+  const { cartItems } = useSelector((state) => state.cart);
+  return (
+    <>
+      <div className='container h-screen'>
+        {cartItems.map((item) => {
+          return (
+            <div
+              key={item.id}
+              className='card lg:card-side bg-base-100 shadow-xl m-8 '
+            >
+              <figure className='w-32'>
+                <img src={item.img} alt='Album' />
+              </figure>
+
+              <div className='card-body'>
+                <h2 className='card-title'>{item.title}</h2>
+                <p className='font-bold'>{`${item.price} $`}</p>
+                <div>
+                  <button className='btn btn-sm btn-outline btn-error inline-block'>
+                    Remove
+                  </button>
+                </div>
+              </div>
+
+              <div className='flex-col text-center justify-center align-middle p-6'>
+                <button className='btn block'>
+                  <FaArrowUp />
+                </button>
+                <p className='m-0  py-3 font-bold'>{item.amount}</p>
+                <button className='btn block'>
+                  <FaArrowDown />
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default CartContainer;

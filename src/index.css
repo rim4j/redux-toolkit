@@ -91,3 +91,7 @@ p {
     line-height: 1;
   }
 }
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
