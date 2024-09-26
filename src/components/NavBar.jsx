@@ -38,6 +38,9 @@ const NavBar = ({ toggleTheme, theme }) => {
                   <h4>total:</h4>
                   <h4>{`${total} $`}</h4>
                 </div>
+                <button className='btn btn-outline btn-sm btn-error '>
+                  Clear
+                </button>
               </div>
             </div>
           </div>
