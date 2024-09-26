@@ -1,10 +1,13 @@
 import { LuMoon } from "react-icons/lu";
 import { IoSunnySharp } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { clearCart } from "../feature/cart/cartSlice";
 
 const NavBar = ({ toggleTheme, theme }) => {
+  const dispatch = useDispatch();
   const { amount, total } = useSelector((state) => state.cart);
+
   return (
     <div className='mb-6'>
       <div className='flex justify-around py-4'>
@@ -38,7 +41,10 @@ const NavBar = ({ toggleTheme, theme }) => {
                   <h4>total:</h4>
                   <h4>{`${total} $`}</h4>
                 </div>
-                <button className='btn btn-outline btn-sm btn-error '>
+                <button
+                  onClick={() => dispatch(clearCart())}
+                  className='btn btn-outline btn-sm btn-error '
+                >
                   Clear
                 </button>
               </div>
