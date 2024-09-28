@@ -3,10 +3,12 @@ import { IoSunnySharp } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../feature/cart/cartSlice";
+import { toggleTheme } from "../feature/theme/themeSlice";
 
-const NavBar = ({ toggleTheme, theme }) => {
+const NavBar = () => {
   const dispatch = useDispatch();
   const { amount, total } = useSelector((state) => state.cart);
+  const { theme } = useSelector((state) => state.theme);
 
   return (
     <div className='mb-6'>
@@ -31,7 +33,10 @@ const NavBar = ({ toggleTheme, theme }) => {
       </dialog>
 
       <div className='flex justify-around py-4'>
-        <button onClick={toggleTheme} className='btn cursor-pointer '>
+        <button
+          onClick={() => dispatch(toggleTheme())}
+          className='btn cursor-pointer '
+        >
           {theme === "light" ? (
             <LuMoon size={18} />
           ) : (
