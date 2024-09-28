@@ -39,7 +39,7 @@ const NavBar = ({ toggleTheme, theme }) => {
               <div className='menu bg-base-200 text-base-content min-h-full w-80 p-4'>
                 <div className='flex justify-around 	py-6'>
                   <h4>total:</h4>
-                  <h4>{`${total} $`}</h4>
+                  <h4>{`${total.toFixed(2)} $`}</h4>
                 </div>
                 <button
                   onClick={() => dispatch(clearCart())}
