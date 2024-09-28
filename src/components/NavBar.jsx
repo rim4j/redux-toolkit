@@ -10,6 +10,26 @@ const NavBar = ({ toggleTheme, theme }) => {
 
   return (
     <div className='mb-6'>
+      {/* modal */}
+
+      <dialog id='my_modal_1' className='modal'>
+        <div className='modal-box'>
+          <h3 className='font-bold text-lg'>Delete!</h3>
+          <p className='py-4'>Remove All Items from Your Shopping Cart?</p>
+          <div className='modal-action'>
+            <form method='dialog'>
+              <button
+                onClick={() => dispatch(clearCart())}
+                className='btn btn-error btn-outline mx-2'
+              >
+                Remove
+              </button>
+              <button className='btn'>Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
       <div className='flex justify-around py-4'>
         <button onClick={toggleTheme} className='btn cursor-pointer '>
           {theme === "light" ? (
@@ -19,6 +39,7 @@ const NavBar = ({ toggleTheme, theme }) => {
           )}
         </button>
 
+        {/* drawer */}
         <div className='relative'>
           <div className='drawer drawer-end'>
             <input id='my-drawer-4' type='checkbox' className='drawer-toggle' />
@@ -42,7 +63,9 @@ const NavBar = ({ toggleTheme, theme }) => {
                   <h4>{`${total.toFixed(2)} $`}</h4>
                 </div>
                 <button
-                  onClick={() => dispatch(clearCart())}
+                  onClick={() =>
+                    document.getElementById("my_modal_1").showModal()
+                  }
                   className='btn btn-outline btn-sm btn-error '
                 >
                   Clear
