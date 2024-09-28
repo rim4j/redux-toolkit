@@ -1,7 +1,10 @@
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { removeItem } from "../feature/cart/cartSlice";
 
 const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
   return (
     <div className='card   lg:card-side bg-base-100 shadow-xl m-8  '>
       <figure className='w-32'>
@@ -12,7 +15,10 @@ const CartItem = ({ item }) => {
         <h2 className='card-title'>{item.title}</h2>
         <p className='font-bold'>{`${item.price} $`}</p>
         <div>
-          <button className='btn btn-sm btn-outline btn-error inline-block'>
+          <button
+            onClick={() => dispatch(removeItem(item.id))}
+            className='btn btn-sm btn-outline btn-error inline-block'
+          >
             Remove
           </button>
         </div>
